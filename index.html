@@ -6,7 +6,7 @@
   <title>Kilian von Neumann-Cosel — AI Developer & Indie Hacker Portfolio</title>
 
   <!-- Primary SEO -->
-  <meta name="description" content="Portfolio of Kilian von Neumann-Cosel, indie hacker & AI developer. Projects: slob.games (AI browser arcade builder) and linuxontab.com (real Linux in a browser tab via WebAssembly).">
+  <meta name="description" content="Portfolio of Kilian von Neumann-Cosel, indie hacker &amp; AI developer. Projects: slob.games (AI browser arcade builder), linuxontab.com (real Linux in a browser tab via WebAssembly), and getclaw.site (LLM REPL in a single shell script).">
   <meta name="author" content="Kilian von Neumann-Cosel">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <link rel="canonical" href="https://kilian-ai.com">
@@ -17,7 +17,7 @@
   <meta property="og:site_name" content="kilian-ai">
   <meta property="og:locale" content="en_US">
   <meta property="og:title" content="Kilian von Neumann-Cosel — AI Developer & Indie Hacker Portfolio">
-  <meta property="og:description" content="Portfolio of Kilian von Neumann-Cosel, indie hacker & AI developer. Projects: slob.games (AI browser arcade builder) and linuxontab.com (real Linux in a browser tab via WebAssembly).">
+  <meta property="og:description" content="Portfolio of Kilian von Neumann-Cosel, indie hacker &amp; AI developer. Projects: slob.games (AI browser arcade builder), linuxontab.com (real Linux in a browser tab via WebAssembly), and getclaw.site (LLM REPL in a single shell script).">
   <meta property="og:image" content="https://kilian-ai.com/assets/og-image.png">
   <meta property="og:image:width" content="1280">
   <meta property="og:image:height" content="800">
@@ -26,7 +26,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Kilian von Neumann-Cosel — AI Developer & Indie Hacker Portfolio">
-  <meta name="twitter:description" content="slob.games + linuxontab.com — browser-native AI and WebAssembly projects by Kilian von Neumann-Cosel.">
+  <meta name="twitter:description" content="slob.games + linuxontab.com + getclaw.site — browser-native AI, WebAssembly, and shell-native LLM tools by Kilian von Neumann-Cosel.">
   <meta name="twitter:image" content="https://kilian-ai.com/assets/og-image.png">
   <meta name="twitter:image:alt" content="kilian-ai portfolio — retro terminal hero with project cards">
 
@@ -51,7 +51,7 @@
         "@id": "https://kilian-ai.com/#website",
         "url": "https://kilian-ai.com",
         "name": "kilian-ai Portfolio",
-        "description": "Portfolio of Kilian von Neumann-Cosel — indie hacker building AI-powered browser tools including slob.games and linuxontab.com.",
+        "description": "Portfolio of Kilian von Neumann-Cosel — indie hacker building AI-powered browser tools including slob.games, linuxontab.com, and getclaw.site.",
         "author": { "@id": "https://kilian-ai.com/#person" }
       },
       {
@@ -81,6 +81,18 @@
               "description": "Real x86 Linux kernel running in a browser tab via v86 + WebAssembly. Zero install, local-first, offline-capable.",
               "applicationCategory": "DeveloperApplication",
               "operatingSystem": "Web Browser"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "claw",
+              "url": "https://getclaw.site",
+              "description": "An LLM REPL that runs on any Linux box. Pure POSIX sh + curl + jq — streaming chat with shell tool calls, rolling memory, and mentor mode. No Node, no npm.",
+              "applicationCategory": "DeveloperApplication",
+              "operatingSystem": "Linux"
             }
           }
         ]
@@ -440,7 +452,7 @@
         <div class="badge pixel">kilian-ai build lab // 1-bit hustle</div>
         <h1 class="pixel">The Portfolio, experience it live and in color.</h1>
         <p class="lead">
-          This page highlights two live projects: an AI browser arcade game builder at slob.games and an in-browser Linux machine at linuxontab.com.
+          This page highlights three live projects: an AI browser arcade builder at slob.games, an in-browser Linux machine at linuxontab.com, and an LLM shell REPL at getclaw.site.
         </p>
         <div class="actions">
           <a class="btn primary" href="#portfolio">Jump To Projects</a>
@@ -459,6 +471,7 @@
 $ ./build --mode portfolio
 [ok] loaded project: slob.games
 [ok] loaded project: linuxontab.com
+[ok] loaded project: getclaw.site
 [ok] fetched linuxontab highlights
 [ok] attached screenshot cards
 [ship] visuals stable at desktop + mobile
@@ -469,7 +482,7 @@ $ ./build --mode portfolio
     <section id="portfolio">
       <div class="section-head">
         <h2 class="pixel">Project Showcase</h2>
-        <p class="sub">Screenshots and project summaries for both requested sites.</p>
+        <p class="sub">Screenshots and project summaries for all three projects.</p>
       </div>
 
       <div class="portfolio">
@@ -520,6 +533,33 @@ $ ./build --mode portfolio
               <a class="chip" href="https://linuxontab.com" target="_blank" rel="noreferrer">Open linuxontab.com</a>
               <a class="chip" href="https://linuxontab.com/shell/" target="_blank" rel="noreferrer">Launch Shell</a>
               <a class="chip" href="https://github.com/kilian-ai/linuxontab" target="_blank" rel="noreferrer">Source</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <img
+            class="shot"
+            src="assets/getclaw.png"
+            alt="Screenshot preview of getclaw.site homepage"
+            loading="lazy"
+          >
+          <div class="project-body">
+            <h3>getclaw.site</h3>
+            <p>
+              An LLM REPL that runs on any Linux box. A single POSIX shell script that gives you a
+              streaming chat loop against OpenAI or Anthropic — with shell tool calls and rolling memory.
+            </p>
+            <ul class="facts">
+              <li>Pure POSIX sh + curl + jq — runs on busybox ash, Alpine, and cheap VPS boxes.</li>
+              <li>Shell tool calls: model emits <code>&lt;shell&gt;</code> blocks, claw runs them and feeds results back.</li>
+              <li>Rolling memory: prompts/replies journaled to JSONL; LLM compacts overflow into session rules.</li>
+              <li>Mentor mode: a second pass critiques and revises the first answer.</li>
+              <li>Multi-provider: switch between OpenAI and Anthropic with a single flag.</li>
+            </ul>
+            <div class="link-row">
+              <a class="chip" href="https://getclaw.site" target="_blank" rel="noreferrer">Open getclaw.site</a>
+              <a class="chip" href="https://github.com/kilian-ai/claw" target="_blank" rel="noreferrer">GitHub</a>
             </div>
           </div>
         </article>
