@@ -6,7 +6,7 @@
   <title>kilian-ai — AI Developer & Indie Hacker Portfolio</title>
 
   <!-- Primary SEO -->
-  <meta name="description" content="Portfolio of Kilian von Neumann-Cosel, indie hacker &amp; AI developer. Projects: slob.games (AI browser arcade builder), linuxontab.com (real Linux in a browser tab via WebAssembly), and getclaw.site (LLM REPL in a single shell script).">
+  <meta name="description" content="Portfolio of Kilian von Neumann-Cosel, indie hacker &amp; AI developer. Projects: slob.games (AI browser arcade builder), linuxontab.com (real Linux in a browser tab via WebAssembly), and getclaw.site (shell-native LLM agent).">
   <meta name="author" content="Kilian von Neumann-Cosel">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <link rel="canonical" href="https://kilian-ai.com">
@@ -17,7 +17,7 @@
   <meta property="og:site_name" content="kilian-ai">
   <meta property="og:locale" content="en_US">
   <meta property="og:title" content="kilian-ai — AI Developer & Indie Hacker Portfolio">
-  <meta property="og:description" content="Portfolio of Kilian von Neumann-Cosel, indie hacker &amp; AI developer. Projects: slob.games (AI browser arcade builder), linuxontab.com (real Linux in a browser tab via WebAssembly), and getclaw.site (LLM REPL in a single shell script).">
+  <meta property="og:description" content="Portfolio of Kilian von Neumann-Cosel, indie hacker &amp; AI developer. Projects: slob.games (AI browser arcade builder), linuxontab.com (real Linux in a browser tab via WebAssembly), and getclaw.site (shell-native LLM agent).">
   <meta property="og:image" content="https://kilian-ai.com/assets/og-image.png">
   <meta property="og:image:width" content="1280">
   <meta property="og:image:height" content="800">
@@ -26,7 +26,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="kilian-ai — AI Developer & Indie Hacker Portfolio">
-  <meta name="twitter:description" content="slob.games + linuxontab.com + getclaw.site — browser-native AI, WebAssembly, and shell-native LLM tools by Kilian von Neumann-Cosel.">
+  <meta name="twitter:description" content="slob.games + linuxontab.com + getclaw.site — browser-native AI, WebAssembly, and a shell-native LLM agent by Kilian von Neumann-Cosel.">
   <meta name="twitter:image" content="https://kilian-ai.com/assets/og-image.png">
   <meta name="twitter:image:alt" content="kilian-ai portfolio — retro terminal hero with project cards">
 
@@ -547,14 +547,14 @@ $ ./build --mode portfolio
           <div class="project-body">
             <h3>getclaw.site</h3>
             <p>
-              An LLM REPL that runs on any Linux box. A single POSIX shell script that gives you a
-              streaming chat loop against OpenAI or Anthropic — with shell tool calls and rolling memory.
+              A shell-native LLM agent that runs on any Linux box. A single POSIX shell script that gives you
+              an autonomous agent loop against OpenAI or Anthropic — with shell tool calls, rolling memory, and mentor mode.
             </p>
             <ul class="facts">
               <li>Pure POSIX sh + curl + jq — runs on busybox ash, Alpine, and cheap VPS boxes.</li>
-              <li>Shell tool calls: model emits <code>&lt;shell&gt;</code> blocks, claw runs them and feeds results back.</li>
+              <li>Agentic shell tool calls: model emits <code>&lt;shell&gt;</code> blocks, claw runs them and feeds results back.</li>
               <li>Rolling memory: prompts/replies journaled to JSONL; LLM compacts overflow into session rules.</li>
-              <li>Mentor mode: a second pass critiques and revises the first answer.</li>
+              <li>Mentor mode: a second agent pass critiques and revises the first answer.</li>
               <li>Multi-provider: switch between OpenAI and Anthropic with a single flag.</li>
             </ul>
             <div class="link-row">
