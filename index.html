@@ -441,6 +441,7 @@
       <div class="menu">
         <a href="#portfolio">Portfolio</a>
         <a href="#research">Research</a>
+        <a href="#polygrait-research">Polygrait</a>
         <a href="mailto:hello@greybox.dev">Contact</a>
       </div>
     </div>
@@ -474,6 +475,7 @@ $ ./build --mode portfolio
 [ok] loaded project: getclaw.site
 [ok] fetched linuxontab highlights
 [ok] attached screenshot cards
+[ok] compiled polygrait research notes
 [ship] visuals stable at desktop + mobile
         </pre>
       </aside>
@@ -578,6 +580,59 @@ $ ./build --mode portfolio
       <div class="notes">
         Research source: linuxontab.com homepage sections including What is LinuxOnTab, Features, Use cases,
         vs Docker, Technology, and Quickstart. Screenshots were captured and stored in local project assets.
+      </div>
+    </section>
+
+    <section id="polygrait-research">
+      <div class="section-head">
+        <h2 class="pixel">Polygrait / Stable Traits — Research Notes</h2>
+        <p class="sub">Architecture and product research for the Polygrait polyglot function platform and its Stable Traits release layer.</p>
+      </div>
+
+      <div class="notes">
+        <p style="margin:0 0 14px"><strong style="color:var(--amber)">What is Polygrait?</strong><br>
+        A polyglot function platform — write a function in any language (JS, Python, Rust, Java, Perl, TypeScript), expose it at a dot-notation address, and call it from any other language or HTTP client. The core value proposition: <em>"Universal Composable Functions — compose JS, Python, Rust into one seamless API."</em></p>
+
+        <p style="margin:0 0 14px"><strong style="color:var(--amber)">Runtime architecture</strong><br>
+        A Rust binary (<code>straits</code>) acts as the polyglot router. It loads function definitions from <code>.trait.toml</code> files, starts language-specific worker subprocesses on demand (Node.js, Python, Java, Perl — Rust runs in-process), and dispatches calls over newline-delimited JSON on stdin/stdout. Each request carries a UUID for concurrent request/response multiplexing. The HTTP layer is Actix-web; the trait registry is a thread-safe DashMap.</p>
+
+        <p style="margin:0 0 14px"><strong style="color:var(--amber)">Three-layer kernel model</strong><br>
+        <strong>Kernel</strong> — fixed infrastructure: registry, dependency resolution, trait loader, interface resolution.<br>
+        <strong>Namespaces</strong> — capability domains (sys, net, gui, kernel, …), each defined by a <code>namespace.toml</code> manifest.<br>
+        <strong>Traits</strong> — concrete implementations. A trait path can act as an interface (<code>sys.rename</code>) with multiple prioritised implementations (<code>sys.rename.posix</code> at priority 100, <code>sys.rename.safe</code> at 50).</p>
+
+        <p style="margin:0 0 14px"><strong style="color:var(--amber)">Stable Traits — release &amp; verification layer</strong><br>
+        Immutable, backward-compatible trait releases with blockchain-anchored integrity. Once a trait is published its signature, tests, and interface contracts are locked — future releases must be backward-compatible. Every release is SHA-256 checksummed and appended to a local hash-chain registry, optionally anchored to the Base (EVM) blockchain. All 14 <code>sys.*</code> traits are compiled as native Rust modules into the binary — no subprocess overhead for system calls.</p>
+
+        <p style="margin:0 0 14px"><strong style="color:var(--amber)">Stable Traits system map</strong></p>
+        <table style="width:100%;border-collapse:collapse;font-size:13px">
+          <thead>
+            <tr style="color:var(--cyan);border-bottom:1px solid var(--line)">
+              <th style="text-align:left;padding:4px 8px">Layer</th>
+              <th style="text-align:left;padding:4px 8px">Trait</th>
+              <th style="text-align:left;padding:4px 8px">Purpose</th>
+            </tr>
+          </thead>
+          <tbody style="color:var(--muted)">
+            <tr><td style="padding:4px 8px">Checksum</td><td style="padding:4px 8px"><code>sys.checksum</code></td><td style="padding:4px 8px">Deterministic SHA-256 over canonicalised JSON</td></tr>
+            <tr><td style="padding:4px 8px">Release</td><td style="padding:4px 8px"><code>sys.release</code></td><td style="padding:4px 8px">Snapshot, verify, test, fix — creates <code>.releases.json</code> artefacts</td></tr>
+            <tr><td style="padding:4px 8px">Registry</td><td style="padding:4px 8px"><code>sys.registry_chain</code></td><td style="padding:4px 8px">Append-only local hash-chain with genesis block and verification</td></tr>
+            <tr><td style="padding:4px 8px">Blockchain</td><td style="padding:4px 8px"><code>sys.chain_anchor_*</code></td><td style="padding:4px 8px">9 traits for Base network anchoring (prepare, submit, sign, verify, …)</td></tr>
+            <tr><td style="padding:4px 8px">Gated calls</td><td style="padding:4px 8px"><code>sys.straits_call</code></td><td style="padding:4px 8px">Every call gated by chain + compat verification before execution</td></tr>
+            <tr><td style="padding:4px 8px">Versioning</td><td style="padding:4px 8px"><code>sys.straits_version</code></td><td style="padding:4px 8px">Auto YYMMDD versioning with intraday suffix (YYMMDD.HHMMSS)</td></tr>
+          </tbody>
+        </table>
+
+        <p style="margin:14px 0 6px"><strong style="color:var(--amber)">Key CLI commands</strong></p>
+        <pre style="margin:0;font-size:12px;color:var(--lime);overflow-x:auto">traits call sys.release snapshot gui.straits_landing   # snapshot a release
+traits call sys.release verify gui.straits_landing     # verify compat chain
+traits call sys.release test gui.straits_landing       # run feature tests
+traits call sys.registry_chain verify                  # verify full hash-chain
+traits call sys.straits_call gui.straits_landing.render dark true  # gated call
+traits validate traits/sys/                            # backward-compat check</pre>
+
+        <p style="margin:14px 0 0"><strong style="color:var(--amber)">Polygrait landing page scope (polygrait.com)</strong><br>
+        Phase 1: static marketing with tabbed code examples (API / Python / JS / TOML), 6-feature highlight grid (Polyglot, Composable, AI-Native, Visual Builder, Package Format, Handles &amp; Streaming), SDK installation grid (Rust/Cargo, npm, pip), and install script. Phase 2: embedded live playground, trait marketplace browser, real-time execution demo.</p>
       </div>
     </section>
   </main>
