@@ -233,6 +233,32 @@
       max-width: 54ch;
     }
 
+    .lead-list {
+      margin: -8px 0 20px;
+      padding-left: 24px;
+      color: var(--text);
+      font-size: clamp(15px, 1.7vw, 18px);
+      max-width: 58ch;
+    }
+
+    .lead-list li {
+      margin-bottom: 8px;
+    }
+
+    .lead-anchor {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(244, 237, 207, 0.32);
+      transition: border-color 160ms ease, color 160ms ease;
+    }
+
+    .lead-anchor:hover,
+    .lead-anchor:focus-visible {
+      color: var(--amber);
+      border-bottom-color: rgba(255, 200, 87, 0.7);
+      outline: none;
+    }
+
     .actions {
       display: flex;
       flex-wrap: wrap;
@@ -452,13 +478,16 @@
         <div class="badge pixel">kilian-ai // independent systems & agentic development lab</div>
         <h1 class="pixel">Exploring AI-assisted software development, research and writing.</h1>
         <p class="lead">
-         Featured projects include:
-
-slob.games — an AI agent-powered browser arcade and game generation platform
-linuxontab.com — a Linux environment running entirely in the browser
-getclaw.site — an agentic LLM shell and terminal-native REPL environment
-
-Built independently with a focus on runtime systems, WebAssembly, AI tooling, and browser infrastructure.</p>
+          Featured projects include:
+        </p>
+        <ul class="lead-list">
+          <li><a class="lead-anchor" href="#project-linuxontab"><strong>linuxontab.com</strong></a> — a Linux environment running entirely in the browser</li>
+          <li><a class="lead-anchor" href="#project-getclaw"><strong>getclaw.site</strong></a> — an agentic LLM shell and terminal-native REPL environment</li>
+          <li><a class="lead-anchor" href="#project-slob"><strong>slob.games</strong></a> — an AI agent-powered browser arcade and game generation platform</li>
+        </ul>
+        <p class="lead">
+          Built independently with a focus on runtime systems, WebAssembly, AI tooling, and browser infrastructure.
+        </p>
         <div class="actions">
           <a class="btn primary" href="#portfolio">Jump To Projects</a>
           <a class="btn" href="#research">See LinuxOnTab Research</a>
@@ -492,31 +521,7 @@ $ ./build --mode portfolio
       </div>
 
       <div class="portfolio">
-        <article class="project">
-          <img
-            class="shot"
-            src="assets/slob-games.png"
-            alt="Screenshot preview of slob.games homepage"
-            loading="lazy"
-          >
-          <div class="project-body">
-            <h3>slob.games</h3>
-            <p>
-              Lightweight browser arcade space. Current homepage presents a Snake game experience with keyboard/tap
-              controls and score tracking.
-            </p>
-            <ul class="facts">
-              <li>Immediate play loop with simple controls.</li>
-              <li>Arcade vibe suitable for quick web demos.</li>
-              <li>Good fit for minimalist game experiments.</li>
-            </ul>
-            <div class="link-row">
-              <a class="chip" href="https://slob.games" target="_blank" rel="noreferrer">Open slob.games</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project">
+        <article class="project" id="project-linuxontab">
           <img
             class="shot"
             src="assets/linuxontab.png"
@@ -543,7 +548,7 @@ $ ./build --mode portfolio
           </div>
         </article>
 
-        <article class="project">
+        <article class="project" id="project-getclaw">
           <img
             class="shot"
             src="assets/getclaw.png"
@@ -567,6 +572,30 @@ $ ./build --mode portfolio
               <a class="chip" href="https://getclaw.site" target="_blank" rel="noreferrer">Open getclaw.site</a>
               <a class="chip" href="https://linuxontab.com/shell/?pip=1&amp;snapshot=https://github.com/kilian-ai/linuxontab/releases/download/snap-v1/alpine-base.bin.gz&amp;pipx=20&amp;pipy=50&amp;pipw=600&amp;piph=400&amp;browser=https://getclaw.site&amp;postboot=https://getclaw.site/install.sh" target="_blank" rel="noreferrer">Try it now</a>
               <a class="chip" href="https://github.com/kilian-ai/claw" target="_blank" rel="noreferrer">GitHub</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project" id="project-slob">
+          <img
+            class="shot"
+            src="assets/slob-games.png"
+            alt="Screenshot preview of slob.games homepage"
+            loading="lazy"
+          >
+          <div class="project-body">
+            <h3>slob.games</h3>
+            <p>
+              Lightweight browser arcade space. Current homepage presents a Snake game experience with keyboard/tap
+              controls and score tracking.
+            </p>
+            <ul class="facts">
+              <li>Immediate play loop with simple controls.</li>
+              <li>Arcade vibe suitable for quick web demos.</li>
+              <li>Good fit for minimalist game experiments.</li>
+            </ul>
+            <div class="link-row">
+              <a class="chip" href="https://slob.games" target="_blank" rel="noreferrer">Open slob.games</a>
             </div>
           </div>
         </article>
